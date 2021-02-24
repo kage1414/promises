@@ -22,9 +22,8 @@ var fetchProfileAndWriteToFile = function(readFilePath, writeFilePath) {
       return getGitHubProfileAsync(user);
     })
     .then((response) => {
-      return fs.writeFile(writeFilePath, JSON.stringify(response), 'utf8', (err) => {
-        console.log(err);
-      });
+      let stringifiedData = JSON.stringify(response);
+      fs.writeFileSync(writeFilePath, stringifiedData);
     });
 };
 
